@@ -3,7 +3,7 @@ import { useApp } from '../store.jsx'
 import { formatCRC, formatFecha } from '../utils/factura.js'
 
 export default function Confirmacion() {
-  const { ultimoPedido, ir, setChatAbierto } = useApp()
+  const { ultimoPedido, ir } = useApp()
 
   if (!ultimoPedido)
     return (
@@ -51,7 +51,7 @@ export default function Confirmacion() {
         <button onClick={() => ir('comprobante')} className="flex items-center justify-center gap-2 rounded-xl bg-amber px-6 py-3 font-semibold text-white shadow-md hover:bg-amber-dark">
           <FileText size={18} /> Ver comprobante electrónico
         </button>
-        <button onClick={() => setChatAbierto(true)} className="flex items-center justify-center gap-2 rounded-xl border-2 border-keto px-6 py-3 font-semibold text-keto-dark hover:bg-keto/10">
+        <button onClick={() => ir('chatbot')} className="flex items-center justify-center gap-2 rounded-xl border-2 border-keto px-6 py-3 font-semibold text-keto-dark hover:bg-keto/10">
           <MessageCircle size={18} /> Seguir por WhatsApp
         </button>
       </div>

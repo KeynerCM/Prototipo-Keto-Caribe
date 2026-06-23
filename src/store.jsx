@@ -28,7 +28,6 @@ export function AppProvider({ children }) {
       return []
     }
   })
-  const [chatAbierto, setChatAbierto] = useState(false)
 
   // Carga inicial desde el .txt (base de datos)
   useEffect(() => {
@@ -181,7 +180,6 @@ export function AppProvider({ children }) {
     carrito, agregarAlCarrito, cambiarCantidad, quitarDelCarrito, vaciarCarrito,
     totalItems, totales, horasCola, horasPedidoActual,
     pedidos, ultimoPedido, confirmarPedido, cambiarEstadoPedido, emitirNotaCredito,
-    chatAbierto, setChatAbierto,
   }
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>

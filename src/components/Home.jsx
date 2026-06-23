@@ -3,7 +3,7 @@ import { useApp } from '../store.jsx'
 import { formatCRC } from '../utils/factura.js'
 
 export default function Home() {
-  const { ir, productos, verProducto, setChatAbierto, agregarAlCarrito } = useApp()
+  const { ir, productos, verProducto, agregarAlCarrito } = useApp()
   const destacados = productos.filter((p) => p.stock > 0).slice(0, 4)
 
   return (
@@ -30,7 +30,7 @@ export default function Home() {
                 Ir a la tienda <ArrowRight size={18} />
               </button>
               <button
-                onClick={() => setChatAbierto(true)}
+                onClick={() => ir('chatbot')}
                 className="flex items-center gap-2 rounded-xl border-2 border-keto px-6 py-3 font-semibold text-keto-dark transition hover:bg-keto/10"
               >
                 <MessageCircle size={18} /> Pedir por WhatsApp
