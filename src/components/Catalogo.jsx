@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { Search, Plus } from 'lucide-react'
 import { useApp } from '../store.jsx'
 import { formatCRC } from '../utils/factura.js'
+import ProductoImagen from './ProductoImagen.jsx'
 
 export default function Catalogo() {
   const { productos, verProducto, agregarAlCarrito } = useApp()
@@ -59,8 +60,8 @@ export default function Catalogo() {
             const bajo = !agotado && p.stock <= p.umbral
             return (
               <div key={p.id} className="group flex flex-col overflow-hidden rounded-2xl border border-keto/10 bg-white shadow-sm transition hover:shadow-md">
-                <button onClick={() => verProducto(p)} className="relative grid aspect-square place-items-center bg-cream text-6xl transition group-hover:scale-105">
-                  {p.emoji}
+                <button onClick={() => verProducto(p)} className="relative grid aspect-square place-items-center overflow-hidden bg-cream text-6xl">
+                  <ProductoImagen producto={p} className="h-full w-full object-cover transition group-hover:scale-105" emojiClassName="text-6xl" />
                   <span
                     className={`absolute left-2 top-2 rounded-full px-2 py-0.5 text-[11px] font-semibold ${
                       agotado ? 'bg-red-100 text-red-700' : bajo ? 'bg-amber/20 text-amber-dark' : 'bg-keto/15 text-keto-dark'

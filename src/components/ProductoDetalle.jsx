@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ArrowLeft, Minus, Plus, ShoppingCart, Check } from 'lucide-react'
 import { useApp } from '../store.jsx'
 import { formatCRC } from '../utils/factura.js'
+import ProductoImagen from './ProductoImagen.jsx'
 
 export default function ProductoDetalle() {
   const { productoActivo, productos, ir, agregarAlCarrito } = useApp()
@@ -43,8 +44,8 @@ export default function ProductoDetalle() {
       </button>
 
       <div className="grid gap-8 md:grid-cols-2">
-        <div className="relative grid aspect-square place-items-center rounded-3xl bg-white text-[10rem] shadow-sm">
-          {p.emoji}
+        <div className="relative grid aspect-square place-items-center overflow-hidden rounded-3xl bg-white text-[10rem] shadow-sm">
+          <ProductoImagen producto={p} className="h-full w-full object-cover" emojiClassName="text-[10rem]" />
           <span
             className={`absolute left-4 top-4 rounded-full px-3 py-1 text-sm font-semibold ${
               agotado ? 'bg-red-100 text-red-700' : bajo ? 'bg-amber/20 text-amber-dark' : 'bg-keto/15 text-keto-dark'

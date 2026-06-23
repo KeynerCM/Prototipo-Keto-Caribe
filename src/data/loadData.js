@@ -4,7 +4,7 @@
 
 const CAMPOS = [
   'id', 'nombre', 'categoria', 'precio', 'stock', 'umbral', 'tiempoHoras',
-  'cabys', 'emoji', 'descripcion', 'ingredientes',
+  'cabys', 'emoji', 'imagen', 'descripcion', 'ingredientes',
   'calorias', 'carbos', 'proteina', 'grasa',
 ]
 
@@ -33,6 +33,7 @@ export async function cargarProductos() {
         tiempoHoras: Number(obj.tiempoHoras),
         cabys: obj.cabys,
         emoji: obj.emoji,
+        imagen: obj.imagen,
         descripcion: obj.descripcion,
         ingredientes: obj.ingredientes.split(',').map((s) => s.trim()),
         nutricion: {

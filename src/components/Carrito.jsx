@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Minus, Plus, Trash2, ShoppingBag, CalendarClock, ArrowRight, ArrowLeft } from 'lucide-react'
 import { useApp } from '../store.jsx'
 import { formatCRC, calcularFechaMinima, formatFecha } from '../utils/factura.js'
+import ProductoImagen from './ProductoImagen.jsx'
 
 export default function Carrito() {
   const {
@@ -78,7 +79,9 @@ export default function Carrito() {
           <div className="space-y-3">
             {carrito.map((i) => (
               <div key={i.id} className="flex items-center gap-4 rounded-2xl border border-keto/10 bg-white p-3 shadow-sm">
-                <div className="grid h-16 w-16 shrink-0 place-items-center rounded-xl bg-cream text-3xl">{i.emoji}</div>
+                <div className="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-xl bg-cream text-3xl">
+                  <ProductoImagen producto={i} className="h-full w-full object-cover" emojiClassName="text-3xl" />
+                </div>
                 <div className="min-w-0 flex-1">
                   <h3 className="truncate font-display font-semibold text-keto-dark">{i.nombre}</h3>
                   <p className="text-sm text-charcoal/60">{formatCRC(i.precio)} c/u</p>

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Send, MessageCircle, X, ShoppingBag, Phone } from 'lucide-react'
 import { useApp } from '../store'
+import ProductoImagen from './ProductoImagen.jsx'
 
 export default function Chatbot() {
   const { ir, productos, agregarAlCarrito } = useApp()
@@ -167,13 +168,16 @@ export default function Chatbot() {
                       key={p.id}
                       onClick={() => agregarProducto(p)}
                       disabled={p.stock <= 0}
-                      className="p-2 rounded-lg bg-keto/5 border border-keto/20 hover:bg-keto/10 transition text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex items-center gap-2 p-2 rounded-lg bg-keto/5 border border-keto/20 hover:bg-keto/10 transition text-left disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <div className="font-medium text-sm text-charcoal">
-                        {p.emoji} {p.nombre}
+                      <div className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-lg bg-cream text-xl">
+                        <ProductoImagen producto={p} className="h-full w-full object-cover" emojiClassName="text-xl" />
                       </div>
-                      <div className="text-xs text-charcoal/70">
-                        ₡{p.precio.toLocaleString('es-CR')} • {p.stock > 0 ? `Stock: ${p.stock}` : 'Agotado'}
+                      <div className="min-w-0">
+                        <div className="truncate font-medium text-sm text-charcoal">{p.nombre}</div>
+                        <div className="text-xs text-charcoal/70">
+                          ₡{p.precio.toLocaleString('es-CR')} • {p.stock > 0 ? `Stock: ${p.stock}` : 'Agotado'}
+                        </div>
                       </div>
                     </button>
                   ))}

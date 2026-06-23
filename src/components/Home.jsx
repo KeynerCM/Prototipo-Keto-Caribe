@@ -1,6 +1,7 @@
 import { ArrowRight, MessageCircle, ShieldCheck, Clock, Leaf, Star } from 'lucide-react'
 import { useApp } from '../store.jsx'
 import { formatCRC } from '../utils/factura.js'
+import ProductoImagen from './ProductoImagen.jsx'
 
 export default function Home() {
   const { ir, productos, verProducto, agregarAlCarrito } = useApp()
@@ -39,14 +40,14 @@ export default function Home() {
           </div>
 
           <div className="relative grid grid-cols-2 gap-4">
-            {['🍰', '🍫', '🥥', '🍩'].map((e, i) => (
+            {destacados.slice(0, 4).map((p, i) => (
               <div
-                key={i}
-                className={`grid aspect-square place-items-center rounded-3xl bg-white text-6xl shadow-sm ${
+                key={p.id}
+                className={`grid aspect-square place-items-center overflow-hidden rounded-3xl bg-white text-6xl shadow-sm ${
                   i % 2 ? 'translate-y-6' : ''
                 }`}
               >
-                {e}
+                <ProductoImagen producto={p} className="h-full w-full object-cover" emojiClassName="text-6xl" />
               </div>
             ))}
           </div>
@@ -83,8 +84,8 @@ export default function Home() {
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           {destacados.map((p) => (
             <div key={p.id} className="group flex flex-col overflow-hidden rounded-2xl border border-keto/10 bg-white shadow-sm transition hover:shadow-md">
-              <button onClick={() => verProducto(p)} className="grid aspect-square place-items-center bg-cream text-6xl transition group-hover:scale-105">
-                {p.emoji}
+              <button onClick={() => verProducto(p)} className="grid aspect-square place-items-center overflow-hidden bg-cream text-6xl">
+                <ProductoImagen producto={p} className="h-full w-full object-cover transition group-hover:scale-105" emojiClassName="text-6xl" />
               </button>
               <div className="flex flex-1 flex-col p-4">
                 <span className="text-[11px] font-medium uppercase tracking-wide text-keto">{p.categoria}</span>
