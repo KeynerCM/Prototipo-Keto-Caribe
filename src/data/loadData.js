@@ -9,7 +9,7 @@ const CAMPOS = [
 ]
 
 export async function cargarProductos() {
-  const res = await fetch('/data/productos.txt')
+  const res = await fetch(`${import.meta.env.BASE_URL}data/productos.txt`)
   if (!res.ok) throw new Error('No se pudo cargar la base de datos de productos')
   const texto = await res.text()
 
